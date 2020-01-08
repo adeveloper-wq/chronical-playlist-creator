@@ -41,7 +41,6 @@ p {font-family: 'Helvetica Neue', sans-serif; font-size: 14px; line-height: 24px
     font-weight: bold;
     width: fit-content;
     border-radius:30px;
-    animation: opa 6s ease-in-out forwards;
     box-shadow: -5px 5px #111;
 }
 
@@ -154,21 +153,6 @@ p {font-family: 'Helvetica Neue', sans-serif; font-size: 14px; line-height: 24px
 
 .songListItem{
     
-}
-
-@keyframes opa{
-    0%{
-        opacity: 0%;
-    }
-    20%{
-        opacity: 0%;
-    }
-    40%{
-        opacity: 0%;
-    }
-    100%{
-        opacity:100%;
-    }
 }
 
 @keyframes color{

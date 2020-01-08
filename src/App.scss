@@ -136,16 +136,6 @@ $back: #1DB954;
 	font-family: Futura, sans-serif;
 	font-weight: 900;
     margin: auto;
-    animation: opa 2s ease-in-out forwards;
-
-    @keyframes opa{
-        0%{
-            opacity: 0%;
-        }
-        100%{
-            opacity:100%;
-        }
-    }
 
 	@keyframes ani{
 		0%{
