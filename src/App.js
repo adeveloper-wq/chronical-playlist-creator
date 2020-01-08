@@ -458,15 +458,15 @@ class App extends Component {
         <h2>Chronical Playlist Creator - revive <span class='otherFont'>your</span> songs</h2>
         { !this.state.loggedIn &&
         <p>
-        WIP (work in progress)/development version -> slower -> no mobile support yet, tested primarly with firefox, but chrome is also working. ie and opera not tested, edge does not work yet.
+        - WIP (work in progress)/development version -> slower -> no mobile support yet, tested primarly with firefox, but chrome is also working. ie and opera not tested, edge does not work yet.
           <br></br>
-          pasting in spotify links not implemented yet (coming soon).
+          - pasting in spotify links not implemented yet (coming soon).
           <br></br>
-        i am a poor student. -> i don't want to pay for servers -> my authentification backend falls asleep after 30 minutes of inactivity. -> there can be long loading times for the spotify login, when it's currently sleeping.
+        - i am a poor student. -> i don't want to pay for servers -> my authentification backend falls asleep after 30 minutes of inactivity. -> there can be long loading times for the spotify login, when it's currently sleeping.
         <br></br>
-        i am a poor student. -> i don't want to pay for servers. -> my front end server has a bandwidth limitation each month. -> you can be unlucky and have to wait for the next month.. ..sorry.
+        - i am a poor student. -> i don't want to pay for servers. -> my front end server has a bandwidth limitation each month. -> you can be unlucky and have to wait for the next month.. ..sorry.
         <br></br>
-        i am a poor student. -> i don't want to pay for servers. -> perhaps unknown problems will arise that I cannot foresee at the moment.
+        - i am a poor student. -> i don't want to pay for servers. -> perhaps unknown problems will arise that I cannot foresee at the moment.
       </p>
         }
         { !this.state.loggedIn &&
