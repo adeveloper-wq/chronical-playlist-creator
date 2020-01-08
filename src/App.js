@@ -464,7 +464,7 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
       </p>
         }
         { !this.state.loggedIn &&
-       <a href='https://spotify-auth-ab033.firebaseapp.com/login'><div class="buttons">
+       <a href='https://spotify-authentication.herokuapp.com/login'><div class="buttons">
         <button class="blob-btn">
           Login to Spotify
           <span class="blob-btn__inner">
