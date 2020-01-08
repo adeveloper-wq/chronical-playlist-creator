@@ -458,9 +458,15 @@ class App extends Component {
         <h2>Chronical Playlist Creator - revive <span class='otherFont'>your</span> songs</h2>
         { !this.state.loggedIn &&
         <p>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
-
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
+        WIP (work in progress)/development version -> slower -> no mobile support yet, tested primarly with firefox, but chrome is also working. ie and opera not tested, edge does not work yet.
+          <br></br>
+          pasting in spotify links not implemented yet (coming soon).
+          <br></br>
+        i am a poor student. -> i don't want to pay for servers -> my authentification backend falls asleep after 30 minutes of inactivity. -> there can be long loading times for the spotify login, when it's currently sleeping.
+        <br></br>
+        i am a poor student. -> i don't want to pay for servers. -> my front end server has a bandwidth limitation each month. -> you can be unlucky and have to wait for the next month.. ..sorry.
+        <br></br>
+        i am a poor student. -> i don't want to pay for servers. -> perhaps unknown problems will arise that I cannot foresee at the moment.
       </p>
         }
         { !this.state.loggedIn &&
