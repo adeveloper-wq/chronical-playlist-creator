@@ -38,6 +38,7 @@ class App extends Component {
       finishedFetchingSongs: false,
       randomSongLink: '',
       randomSongURL: '',
+      useLinks: false,
       id: ''
     }
 
@@ -443,7 +444,18 @@ class App extends Component {
       console.error(err);
     }); 
     //console.log(playlistID);
-    
+  }
+
+  checkTextArea(){
+    if(document.getElementById("playlistTextArea").value == ''){
+      this.setState({
+        useLinks: false
+      });
+    }else{
+      this.setState({
+        useLinks: true
+      });
+    }
   }
 
   render() {
@@ -503,14 +515,8 @@ class App extends Component {
         </div>
         }
          { this.state.loggedIn && !this.state.playlistFetched &&
-         <textarea class="dropZone" cols="50" rows="10" placeholder="Copy playlist-links inside here, several seperated with &quot;,&quot;"></textarea>
+         <textarea class="dropZone" cols="50" rows="10" id="playlistTextArea" onChange={() => this.checkTextArea()} placeholder="Copy playlist-links inside here, several seperated with &quot;,&quot;"></textarea>
          }
-          { this.state.loggedIn && !this.state.playlistFetched &&
-        <div class="normalText">
-          or
-        </div>
-        }
-
 
         { this.state.playlistFetched && !this.state.songsFetched &&
 
@@ -573,12 +579,24 @@ class App extends Component {
             </div>
             }
 
-        { this.state.loggedIn && !this.state.songsFetched &&
+        { this.state.loggedIn && !this.state.songsFetched && this.state.playlistFetched &&
+          <div class="normalText" id="smaller">
+            Choose your playlists:
+          </div>
+        }
+
+        { this.state.loggedIn && !this.state.playlistFetched && !this.state.useLinks &&
+          <div class="normalText">
+            or
+          </div>
+        }
+
+        { this.state.loggedIn && !this.state.playlistFetched && !this.state.useLinks &&
         <div class="normalText" id="smaller">
           Choose from your playlists:
         </div>
         }
-        { this.state.loggedIn && !this.state.playlistFetched &&
+        { this.state.loggedIn && !this.state.playlistFetched && !this.state.useLinks &&
         <div class="center" >
           <label class="container">Only own playlists
           <input type="checkbox" id="checkboxOwnPlaylists" defaultChecked={this.state.onlyOwnPlaylist} onChange={() => this.setOwnPlaylistsBool()} />
