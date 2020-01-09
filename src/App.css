@@ -27,7 +27,7 @@ h1 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 275px; f
 
 h2 {font-family: 'Open Sans', sans-serif; font-size: 30px; font-weight: 300; line-height: 32px; margin: 0 0 30px; text-align: center; animation: color 2s ease-in-out forwards}
 
-p {font-family: 'Helvetica Neue', sans-serif; font-size: 14px; line-height: 24px; margin: auto; text-align: justify; text-justify: inter-word; width: 500px; animation: color 2s ease-in-out forwards}
+p {font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; margin: auto; text-align: justify; text-justify: inter-word; width: 500px; animation: color 2s ease-in-out forwards}
 
 .userText {
     background-color: #1DB954;
@@ -46,7 +46,7 @@ p {font-family: 'Helvetica Neue', sans-serif; font-size: 14px; line-height: 24px
 
 .dropZone{
     width: 500px;
-    height: 300px;
+    max-height: 300px;
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
     background-color: #1DB954;
     padding: 20px;
@@ -312,3 +312,51 @@ p {font-family: 'Helvetica Neue', sans-serif; font-size: 14px; line-height: 24px
 #gridDown {
     z-index: 10;
     }
+
+
+.modal {
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    }
+.modal > .header {
+    width: 100%;
+    border-bottom: 1px solid gray;
+    font-size: 18px;
+    text-align: center;
+    padding: 5px;
+}
+.modal > .content {
+    width: 100%;
+    padding: 0 20px 0 20px;
+}
+.modal > .close {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    font-size: 24px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #cfcece;
+}
+
+li{
+    margin: 10px 0;
+    }
+
+.loginList{
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    margin: 0 auto;
+    background-color: whitesmoke;
+    width: 650px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+
+ol{
+    margin: 0 auto;
+    display: table;
+}

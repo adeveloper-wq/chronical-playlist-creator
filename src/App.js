@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import './App.scss';
 
+import Popup from "reactjs-popup";
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
 
@@ -39,8 +40,17 @@ class App extends Component {
       randomSongLink: '',
       randomSongURL: '',
       useLinks: false,
+      open: false,
+      open2: false,
+      noTracksFoundState: false,
       id: ''
     }
+
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+
+    this.openModal2 = this.openModal2.bind(this);
+    this.closeModal2 = this.closeModal2.bind(this);
 
     spotifyApi.getMe()
       .then((response3) => {
@@ -51,6 +61,21 @@ class App extends Component {
       })
   
   }
+
+  openModal() {
+    this.setState({ open: true });
+  }
+  closeModal() {
+    this.setState({ open: false });
+  }
+
+  openModal2() {
+    this.setState({ open2: true });
+  }
+  closeModal2() {
+    this.setState({ open2: false });
+  }
+
   getHashParams() {
     var hashParams = {};
     var e, r = /([^&;=]+)=?([^&;]*)/g,
@@ -76,7 +101,40 @@ class App extends Component {
   }
 
   getPlaylists(){
-    this.start();
+    if (this.state.useLinks){
+      this.setState({ playlistsToWorkWith: [] })
+      var textareaString = document.getElementById("playlistTextArea").value;
+      textareaString = textareaString.replace(/\s+/g, '');
+      var links = textareaString.split(',');
+      var playlistIDs = [];
+      links.forEach(element => {
+        var link = element.substring(34, 56);
+        playlistIDs.push(link);
+      });
+      var playlistLinkCount = playlistIDs.length;
+      var count = 0;
+      var bley = this;
+      playlistIDs.forEach(element => {
+        spotifyApi.getPlaylist(element)
+          .then((response) => {
+            var joined = this.state.playlistsToWorkWith.concat(response);
+            this.setState({ playlistsToWorkWith: joined })
+            count++;
+            if (count == playlistLinkCount){
+              this.setState({
+                playlistFetched: true,
+                opacity: "0%"
+              });
+            }
+          }, function(err) {
+            //console.error(err);
+            bley.setState({ playlistsToWorkWith: [] })
+            bley.openModal2();
+          });  
+      });
+    }else{
+      this.start();
+    }
   }
 
   start(){
@@ -221,40 +279,50 @@ class App extends Component {
 
   startCreatingPlaylist(){
     var numberPlaylists = this.state.chosenPlaylists.length;
-    var start = 0;
-    this.state.chosenPlaylists.forEach(async element => {
-      var songs = [];
-      console.log(element.tracks);
-      var dataToFetch = Math.ceil(element.tracks.total/100);
-      var dataFetched = 0;
-      var i = 0;
-      //var playlists = [];
-      while (i < element.tracks.total){
-        
+   
+    if(numberPlaylists < 1 || document.getElementById("startDate").value.length < 2 || document.getElementById("endDate").value.length < 2){
+      this.openModal();
+    }else{
+      var start = 0;
+      this.state.chosenPlaylists.forEach(async element => {
+        var songs = [];
+        console.log(element.tracks);
+        var dataToFetch = Math.ceil(element.tracks.total/100);
+        var dataFetched = 0;
+        var i = 0;
         //var playlists = [];
-        await this.Sleep(3000);
-        spotifyApi.getPlaylistTracks(element.id, {'offset': i})
-        .then((response2) => {
-          songs = songs.concat(response2.items);
-          dataFetched++;
-          if (dataFetched == dataToFetch) this.checkTracks(songs, element);
-        }, function(err) {
-          console.error(err);
-        });            
-        //var allPlaylists2 = oldPlaylists.concat(this.state.allPlaylists);
-        i = i + 100;
+        while (i < element.tracks.total){
+          
+          //var playlists = [];
+          await this.Sleep(3000);
+          spotifyApi.getPlaylistTracks(element.id, {'offset': i})
+          .then((response2) => {
+            songs = songs.concat(response2.items);
+            dataFetched++;
+            if (dataFetched == dataToFetch) this.checkTracks(songs, element);
+          }, function(err) {
+            console.error(err);
+          });            
+          //var allPlaylists2 = oldPlaylists.concat(this.state.allPlaylists);
+          i = i + 100;
+        }
+        start++;
+        if (start == numberPlaylists) {
+          this.setState({
+            opacity2: "0%",
+            finishedFetchingSongs: true
+          });
+          if (this.state.allTracksWithoutKeys.length < 1){
+            this.setState({
+              noTracksFoundState: true,
+            });
+          }
+        }
+      });
+      this.setState({
+        songsFetched: true,
+      });
       }
-      start++;
-      if (start == numberPlaylists) {
-        this.setState({
-          opacity2: "0%",
-          finishedFetchingSongs: true
-        });
-      }
-    });
-    this.setState({
-      songsFetched: true,
-    });
   }
 
   Sleep(milliseconds) {
@@ -469,18 +537,75 @@ class App extends Component {
         </h1>
         <h2>Chronical Playlist Creator - revive <span class='otherFont'>your</span> songs</h2>
         { !this.state.loggedIn &&
-        <p>
-        - WIP (work in progress)/development version -> slower -> no mobile support yet, tested primarly with firefox, but chrome is also working. ie and opera not tested, edge does not work yet.
-          <br></br>
-          - pasting in spotify links not implemented yet (coming soon).
-          <br></br>
-        - i am a poor student. -> i don't want to pay for servers -> my authentification backend falls asleep after 30 minutes of inactivity. -> there can be long loading times for the spotify login, when it's currently sleeping.
-        <br></br>
-        - i am a poor student. -> i don't want to pay for servers. -> my front end server has a bandwidth limitation each month. -> you can be unlucky and have to wait for the next month.. ..sorry.
-        <br></br>
-        - i am a poor student. -> i don't want to pay for servers. -> perhaps unknown problems will arise that I cannot foresee at the moment.
-      </p>
+        <div class="loginList">
+          <p style={{fontWeight: "bold"}}>
+            With this application you can create playlists that contain all the songs added in a given period to playlists.
+          </p>
+            <ol>
+              <li>Get a selection of playlists (paste in links or choose from your profile).</li>
+              <li>Choose playlists in which songs are searched for.</li>
+              <li>Select the time period.</li>
+              <li>Let the application search for songs.</li>
+              <li>Create the playlist.</li>
+            </ol> 
+          </div>
         }
+        <Popup defaultOpen modal>
+          {close => (
+            <div className="modal">
+              <a className="close" onClick={close}>
+                &times;
+              </a>
+              <div className="header"> Important Informations </div>
+              <div className="content">
+                {" "}
+                <ul>
+                  <li>WIP (work in progress)/development version -> slower -> no mobile support yet, tested primarly with firefox, but chrome is also working. ie and opera not tested, edge does not work yet.</li>
+                  <li>i am a poor student. -> i don't want to pay for servers -> my authentification back-end falls asleep after 30 minutes of inactivity. -> there can be long loading times for the spotify login, when it's currently sleeping.</li>
+                  <li>i am a poor student. -> i don't want to pay for servers. -> my front-end server has a bandwidth limitation each month. -> you can be unlucky and have to wait for the next month.. ..sorry.</li>
+                  <li>i am a poor student. -> i don't want to pay for servers. -> perhaps unknown problems will arise that I cannot foresee at the moment.</li>
+                </ul> 
+              </div>
+              <div class="button_cont" align="center" style={{marginBottom: 10 + "px"}}><a class="example_e_small" target="_blank" rel="nofollow noopener"  onClick={() => {close()}}>Close window</a></div>
+            </div>
+          )}
+        </Popup>
+        
+        <Popup modal onClose={this.closeModal} open={this.state.open}>
+          {close => (
+            <div className="modal missingPopup">
+              <a className="close" onClick={close}>
+                &times;
+              </a>
+              <div className="header"> Inputs are missing. </div>
+              <div className="content">
+                {" "}
+                <ul>
+                  <li>Start date selected?</li>
+                  <li>End date selected?</li>
+                  <li>Playlists chosen?</li>
+                </ul> 
+              </div>
+              <div class="button_cont" align="center" style={{marginBottom: 10 + "px"}}><a class="example_e_small" target="_blank" rel="nofollow noopener"  onClick={() => {close()}}>Complete Inputs</a></div>
+            </div>
+          )}
+        </Popup>
+
+        <Popup modal onClose={this.closeModal2} open={this.state.open2}>
+          {close => (
+            <div className="modal missingPopup">
+              <a className="close" onClick={close}>
+                &times;
+              </a>
+              <div className="header"> Error with the playlist links. </div>
+              <div className="content">
+                {" "}
+                Check all links, wether they are valid.
+              </div>
+              <div class="button_cont" align="center" style={{marginBottom: 10 + "px"}}><a class="example_e_small" target="_blank" rel="nofollow noopener"  onClick={() => {close()}}>Re-enter playlist links</a></div>
+            </div>
+          )}
+        </Popup>
         { !this.state.loggedIn &&
        <a href='https://spotify-authentication.herokuapp.com/login'><div class="buttons">
         <button class="blob-btn">
@@ -511,11 +636,11 @@ class App extends Component {
       }
       { this.state.loggedIn &&
         <div class="userText">
-         Hello {this.state.name}
+         Good to see you {this.state.name}
         </div>
         }
          { this.state.loggedIn && !this.state.playlistFetched &&
-         <textarea class="dropZone" cols="50" rows="10" id="playlistTextArea" onChange={() => this.checkTextArea()} placeholder="Copy playlist-links inside here, several seperated with &quot;,&quot;"></textarea>
+         <textarea class="dropZone" cols="50" rows="10" id="playlistTextArea" style={{marginBottom: 15 + "px"}} onChange={() => this.checkTextArea()} placeholder="Copy playlist-links inside here, several seperated with &quot;,&quot;. Not the Spotify URI or the embed code. Example: &quot;https://open.spotify.com/playlist/37i9dQZF1DWWwzidNQX6jx?si=77gRyN81QkqX01Cl0Nkp5w&quot;"></textarea>
          }
 
         { this.state.playlistFetched && !this.state.songsFetched &&
@@ -557,13 +682,19 @@ class App extends Component {
             <div class="button_cont" align="center"><a class="example_e_small" target="_blank" rel="nofollow noopener" href={this.state.playlistLink}>Here is your playlist</a></div>
             </div>
             <div class="box">
-              You listened <a href={this.state.randomSongURL} title="mehr Informationen">to</a>:
+              You listened <a target="_blank" rel="noopener noreferrer" href={this.state.randomSongURL} title="mehr Informationen">to</a>:
             </div>
             <div class="box">
             <audio controls="controls">
               <source src={this.state.randomSongLink} type="audio/mpeg"/>
               Your browser doesn't support audio playback.
             </audio>
+            </div>
+            <div class="box">
+              
+            </div>
+            <div class="box">
+            <div class="button_cont" align="center"><a class="example_e_small" target="_blank" rel="nofollow noopener" href="https://cpc-dev.netlify.com/">Create new playlist</a></div>
             </div>
           </div>
         } 
@@ -586,7 +717,7 @@ class App extends Component {
         }
 
         { this.state.loggedIn && !this.state.playlistFetched && !this.state.useLinks &&
-          <div class="normalText">
+          <div class="normalText" style={{paddingTop: 0 + "px"}}>
             or
           </div>
         }
@@ -609,7 +740,7 @@ class App extends Component {
         <div class="button_cont" align="center"><a class="example_e" target="_blank" rel="nofollow noopener" onClick={() => this.getPlaylists()}>Load playlists!</a></div>
         }        
 
-        { this.state.songsFetched && !this.state.createdPlaylist &&
+        { this.state.songsFetched && !this.state.createdPlaylist && !this.state.noTracksFoundState &&
          <div id="containerOverlay2">
           <div id="loadingUp" class="rainbow" style={{opacity: this.state.opacity2}}></div>
           <div id="gridDown">
@@ -623,6 +754,21 @@ class App extends Component {
             }
             </div>
           </div>
+          </div>
+        </div>
+        } 
+
+        { this.state.songsFetched && !this.state.createdPlaylist && this.state.noTracksFoundState &&
+         <div id="containerOverlay2">
+          <div id="loadingUp" class="rainbow" style={{opacity: this.state.opacity2}}></div>
+          <div id="gridDown">
+            <div class="containerGRIDSmall">
+              <div class="boxSmall">
+                No matching tracks found!
+              </div>
+              <div class="boxSmall">
+              </div>
+            </div>
           </div>
         </div>
         } 
@@ -665,8 +811,6 @@ class App extends Component {
   }
 }
 
+
 export default App;
-
-
-
 
