@@ -542,7 +542,7 @@ class App extends Component {
             With this application you can create playlists that contain all the songs added in a given period to playlists.
           </p>
             <ol>
-              <li>Get a selection of playlists (paste in links or choose from your profile).</li>
+              <li>Get a selection of playlists (paste in links or load from your profile).</li>
               <li>Choose playlists in which songs are searched for.</li>
               <li>Select the time period.</li>
               <li>Let the application search for songs.</li>
