@@ -652,28 +652,28 @@ class App extends Component {
           </div>
           }
           { this.state.loggedIn && !this.state.playlistFetched &&
-          <textarea className="dropZone" cols="50" rows="10" id="playlistTextArea" style={{marginBottom: 15 + "px"}} onChange={() => this.checkTextArea()} placeholder="Copy playlist-links inside here, several seperated with &quot;,&quot;. Not the Spotify URI or the embed code. Example: &quot;https://open.spotify.com/playlist/37i9dQZF1DWWwzidNQX6jx?si=77gRyN81QkqX01Cl0Nkp5w&quot;"></textarea>
+          <textarea className="dropZone" rows="10" id="playlistTextArea" style={{marginBottom: 15 + "px"}} onChange={() => this.checkTextArea()} placeholder="Copy playlist-links inside here, several seperated with &quot;,&quot;. Not the Spotify URI or the embed code. Example: &quot;https://open.spotify.com/playlist/37i9dQZF1DWWwzidNQX6jx?si=77gRyN81QkqX01Cl0Nkp5w&quot;"></textarea>
           }
 
           { this.state.playlistFetched && !this.state.songsFetched &&
 
-            <div id="containerOverlay">
+            <div id="containerOverlayPlaylistsMenu">
               <div id="loadingUp" className="rainbow" style={{opacity: this.state.opacity}}></div>
               <div id="gridDown">
-                <div className="containerGRID">
-                <div className="box">
+                <div className="containerGRIDPlaylistsMenu">
+                <div className="boxPlaylistsMenu">
                   Number of found playlists:  {this.state.playlistsToWorkWith.length}
                 </div>
-                <div className="box">
+                <div className="boxPlaylistsMenu">
                   Number of chosen playlists:  {this.state.chosenPlaylists.length}
                 </div>
-                <div className="box">
+                <div className="boxPlaylistsMenu">
                   <label>
                   Start date:&nbsp;&nbsp;
                   <input type="date" id="startDate" className="smaller backgroundTable" onChange={() => this.onDateChanged("start")} ></input>
                   </label>
                 </div>
-                <div className="box">
+                <div className="boxPlaylistsMenu">
                   <label>
                   End date:&nbsp;&nbsp;
                   <input type="date" id="endDate" className="smaller backgroundTable" onChange={() => this.onDateChanged("end")} ></input>
@@ -687,25 +687,25 @@ class App extends Component {
           { this.state.createdPlaylist &&
 
               <div className="containerGRIDFinish">
-              <div className="box">
+              <div className="boxFinish">
                 Finished creating the playlist!
               </div>
-              <div className="box">
+              <div className="boxFinish">
               <div className="button_cont" align="center"><a className="example_e_small" target="_blank" rel="nofollow noopener" href={this.state.playlistLink}>Here is your playlist</a></div>
               </div>
-              <div className="box">
+              <div className="boxFinish">
                 You listened <a target="_blank" rel="noopener noreferrer" href={this.state.randomSongURL} title="mehr Informationen">to</a>:
               </div>
-              <div className="box">
+              <div className="boxFinish">
               <audio controls="controls">
                 <source src={this.state.randomSongLink} type="audio/mpeg"/>
                 Your browser doesn't support audio playback.
               </audio>
               </div>
-              <div className="box">
+              <div className="boxFinish">
                 
               </div>
-              <div className="box">
+              <div className="boxFinish">
               <div className="button_cont" align="center"><a className="example_e_small" target="_blank" rel="nofollow noopener" href="https://cpc-dev.netlify.com/">Create new playlist</a></div>
               </div>
             </div>
@@ -713,7 +713,7 @@ class App extends Component {
 
           {this.state.loggedIn && this.state.playlistFetched && !this.state.songsFetched &&
           <div className="box">
-              <div className="button_cont" align="center"><button type="button" className="example_e_small" target="_blank" rel="nofollow noopener" onClick={() => this.checkAllPlaylists()}>Check/uncheck all playlists</button></div>
+              <div className="button_cont" align="center"><button type="button" className="example_e_small" target="_blank" rel="nofollow noopener" style={{marginBottom: '10px'}} onClick={() => this.checkAllPlaylists()}>Check/uncheck all playlists</button></div>
               </div>
               }
           {this.state.loggedIn && this.state.playlistFetched && !this.state.songsFetched &&
@@ -753,14 +753,14 @@ class App extends Component {
           }        
 
           { this.state.songsFetched && !this.state.createdPlaylist && !this.state.noTracksFoundState &&
-          <div id="containerOverlay2">
+          <div id="containerOverlayTracksMenu">
             <div id="loadingUp" className="rainbow" style={{opacity: this.state.opacity2}}></div>
             <div id="gridDown">
-              <div className="containerGRIDSmall">
-                <div className="boxSmall">
+              <div className="containerGRIDTracksMenu">
+                <div className="boxTracksMenu">
                   Number of found tracks:  {this.state.allTracksWithoutKeys.length}
                 </div>
-                <div className="boxSmall">
+                <div className="boxTracksMenu">
                 { this.state.finishedFetchingSongs &&
                 <div className="button_cont" align="center"><button type="button" className="example_e_small" target="_blank" rel="nofollow noopener" onClick={() => this.makePlaylist()}>Make playlist!</button></div>
               }
@@ -818,16 +818,17 @@ class App extends Component {
             )}
             </div>
           }
-        
-          <div className="containerGRIDFoot">
-            <div className="boxFoot">
-              Impressum
-            </div>
-            <div className="boxFoot">
-              T
-            </div>
-            <div className="boxFoot">
-              G
+          <div className="contentBox">
+            <div className="containerGRIDFoot">
+              <div className="boxFoot">
+                Impressum
+              </div>
+              <div className="boxFoot">
+                Twitter
+              </div>
+              <div className="boxFoot">
+                Github
+              </div>
             </div>
           </div>
         </div>
