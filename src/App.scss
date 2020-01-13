@@ -825,3 +825,26 @@ audio{
     margin: 0px 22px 30px 80px;
   }
 }
+
+.boxFoot{
+  transition: color 0.5s;
+  cursor: pointer;
+}
+
+.impressum:hover{
+  color: $primary-color;
+}
+
+.footLinks:visited, .footLinks:link, .footLinks:active
+{
+  text-decoration: none;
+  color: black;
+}
+
+.footLinksGithub:hover{
+  color: #d73a49;
+}
+
+.footLinksTwitter:hover{
+  color: #1da1f2;
+}
