@@ -835,6 +835,11 @@ audio{
   color: $primary-color;
 }
 
+.footLinksUnderline:visited, .footLinksUnderline:link, .footLinksUnderline:active
+{
+  color: black;
+}
+
 .footLinks:visited, .footLinks:link, .footLinks:active
 {
   text-decoration: none;

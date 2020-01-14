@@ -634,10 +634,14 @@ class App extends Component {
             <Modal open={this.state.informationWindowOpen} onClose={this.onCloseModal} center styles={this.state.modalStyle}>
               <h3>Important Informations</h3>
               <div>
-                <p>- WIP (work in progress)/development version -> slower -> no mobile support yet, tested primarly with firefox, but chrome is also working. ie and opera not tested, edge does not work yet.</p>
-                <p>- i am a poor student. -> i don't want to pay for servers -> my authentification back-end falls asleep after 30 minutes of inactivity. -> there can be long loading times for the spotify login, when it's currently sleeping.</p>
-                <p>- i am a poor student. -> i don't want to pay for servers. -> my front-end server has a bandwidth limitation each month. -> you can be unlucky and have to wait for the next month.. ..sorry.</p>
-                <p>- i am a poor student. -> i don't want to pay for servers. -> perhaps unknown problems will arise that I cannot foresee at the moment.</p>
+                <p>- <b>Development version -></b> Full support currently only on Firefox and Chrome </p>
+                <p>- <b>I am a poor student -></b> I don't want to pay for servers. <b>-></b> My authentification back-end falls asleep after 30 minutes of inactivity. <b>-></b> There can be long loading times for the Spotify log in, when it's currently sleeping.</p>
+                <p>- <b>I am a poor student -></b> I don't want to pay for servers. <b>-></b> My front-end server has a bandwidth limitation each month. <b>-></b> You can be unlucky and have to wait for the next month.. ..sorry.</p>
+                <p>- <b>I am a poor student -></b> I don't want to pay for servers. <b>-></b> Perhaps unknown problems will arise that I cannot foresee at the moment.</p>
+                <br></br>
+                <p>
+                  Bugs/feature requests can be posted on <a target="_blank" className="footLinksUnderline footLinksGithub" rel="noopener noreferrer" href="https://github.com/adeveloper-wq/chronical-playlist-creator-issues" title="Twitter">Github</a>.
+                </p>
               </div> 
             </Modal>
           }
@@ -658,7 +662,7 @@ class App extends Component {
           <Modal open={this.state.open3} onClose={this.closeModal3} center styles={this.state.modalStyle}>
               <h3>Logged Out!</h3>
               <p>
-                The session expired, please login again.
+                The session expired, please log in again.
               </p>
           </Modal>
           <Modal open={this.state.openImpressum} onClose={this.closeModalImpressum} center styles={this.state.modalStyle}>
@@ -738,7 +742,7 @@ class App extends Component {
           { !this.state.loggedIn &&
         <a href='https://spotify-authentication.herokuapp.com/login'><div className="buttons">
           <button className="blob-btn">
-            Login to Spotify
+            Log in to Spotify
             <span className="blob-btn__inner">
               <span className="blob-btn__blobs">
                 <span className="blob-btn__blob"></span>
