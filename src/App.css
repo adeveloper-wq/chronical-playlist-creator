@@ -48,15 +48,6 @@
     padding: 10px;
 }
 
-@keyframes color{
-    0%{
-        color: #fdcb6e;
-    }
-    100%{
-        color:#111;
-    }
-}
-
 /* Customize the label (the container) */
 .container {
     display: block;

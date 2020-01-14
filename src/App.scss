@@ -118,7 +118,7 @@ h1 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: $base-fo
   }
 }
 
-h2 {font-family: 'Open Sans', sans-serif; display: none; font-weight: 300; line-height: 32px; margin: 0 0 5%; text-align: center; animation: color 2s ease-in-out forwards;
+h2 {font-family: 'Open Sans', sans-serif; display: none; font-weight: 300; line-height: 32px; margin: 0 0 5%; text-align: center;
   @media #{$mq-medium} {
     font-size: $base-font-size-h2*$factor-medium;
     margin: 0 0 30px;
@@ -959,7 +959,7 @@ audio{
 }
 
 .backgroundTable:hover{
-  animation: colorDatePicker 0.1s ease-in-out forwards;;
+  animation: colorDatePicker 0.1s ease-in-out forwards;
 }
 
 @keyframes colorDatePicker{
