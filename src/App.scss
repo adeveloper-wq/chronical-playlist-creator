@@ -185,7 +185,7 @@ $borderW: 2px;
   text-transform: uppercase;
   color: $cyan;
   font-weight: bold;
-  font-size: $base-font-size;
+  font-size: $base-font-size*0.9;
   background-color: transparent;
   outline: none;
   border: none;
@@ -194,23 +194,23 @@ $borderW: 2px;
   border-radius:30px;
 
   @media #{$mq-medium} {
-    font-size: $base-font-size*$factor-medium;
+    font-size: $base-font-size*$factor-medium*0.9;
   }
 
   @media #{$mq-large} {
-    font-size: $base-font-size*$factor-large;
+    font-size: $base-font-size*$factor-large*0.9;
   }
 
   @media #{$mq-xlarge} {
-    font-size: $base-font-size*$factor-xlarge;
+    font-size: $base-font-size*$factor-xlarge*0.9;
   }
 
   @media #{$mq-xxlarge} {
-    font-size: $base-font-size*$factor-xxlarge;
+    font-size: $base-font-size*$factor-xxlarge*0.9;
   }
 
   @media #{$mq-xxlarge} {
-    font-size: $base-font-size*$factor-xxlarge;
+    font-size: $base-font-size*$factor-xxlarge*0.9;
   }
   
   &:before {
