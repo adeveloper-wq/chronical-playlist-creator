@@ -52,7 +52,9 @@ class App extends Component {
         overlay: {background: '#fdcb6e'},
       },
       currentDate: '',
-      id: ''
+      id: '',
+      isFirefox: typeof InstallTrigger !== 'undefined',
+      isChrome: !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime)
     }
 
     this.onOpenModal = this.onOpenModal.bind(this);
@@ -773,7 +775,9 @@ class App extends Component {
           { this.state.playlistFetched && !this.state.songsFetched &&
 
             <div id="containerOverlayPlaylistsMenu">
+              {(this.state.isChrome || this.state.isFirefox) &&
               <div id="loadingUp" className="rainbow" style={{opacity: this.state.opacity}}></div>
+              }
               <div id="gridDown">
                 <div className="containerGRIDPlaylistsMenu">
                 <div className="boxPlaylistsMenu">
@@ -873,7 +877,9 @@ class App extends Component {
 
           { this.state.songsFetched && !this.state.createdPlaylist && !this.state.noTracksFoundState &&
           <div id="containerOverlayTracksMenu">
+            {(this.state.isChrome || this.state.isFirefox) &&
             <div id="loadingUp" className="rainbow" style={{opacity: this.state.opacity2}}></div>
+            }
             <div id="gridDown">
               <div className="containerGRIDTracksMenu">
                 <div className="boxTracksMenu">
