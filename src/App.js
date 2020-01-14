@@ -322,7 +322,16 @@ class App extends Component {
 
   startCreatingPlaylist(){
     var numberPlaylists = this.state.chosenPlaylists.length;
-   
+    if(new Date(this.state.startDate) > new Date(this.state.currentDate)){
+      this.setState({
+        startDate: this.state.currentDate
+      });
+    }
+    if(new Date(this.state.endDate) > new Date(this.state.currentDate)){
+      this.setState({
+        endDate: this.state.currentDate
+      });
+    }
     if(numberPlaylists < 1 || document.getElementById("startDate").value.length < 2 || document.getElementById("endDate").value.length < 2){
       this.openModal();
     }else{
@@ -799,15 +808,19 @@ class App extends Component {
               <div className="boxFinish">
               <div className="button_cont" align="center"><a className="example_e_small" target="_blank" rel="nofollow noopener" href={this.state.playlistLink}>Here is your playlist</a></div>
               </div>
-              <div className="boxFinish">
-                You listened <a target="_blank" rel="noopener noreferrer" href={this.state.randomSongURL} title="mehr Informationen">to</a>:
-              </div>
-              <div className="boxFinish">
-              <audio controls="controls">
-                <source src={this.state.randomSongLink} type="audio/mpeg"/>
-                Your browser doesn't support audio playback.
-              </audio>
-              </div>
+              { this.state.randomSongLink !== null && this.state.randomSongLink.length > 3 &&
+                <div className="boxFinish">
+                  You listened <a target="_blank" rel="noopener noreferrer" href={this.state.randomSongURL} title="mehr Informationen">to</a>:
+                </div>
+              }
+              { this.state.randomSongLink !== null && this.state.randomSongLink.length > 3 &&
+                <div className="boxFinish">
+                <audio controls="controls">
+                  <source src={this.state.randomSongLink} type="audio/mpeg"/>
+                  Your browser doesn't support audio playback.
+                </audio>
+                </div>
+              }
               <div className="boxFinish">
                 
               </div>
@@ -855,7 +868,7 @@ class App extends Component {
           }
 
           { this.state.loggedIn && !this.state.playlistFetched &&
-          <div className="button_cont" align="center"><button type="button" className="example_e" target="_blank" rel="nofollow noopener" onClick={() => this.getPlaylists()}>Load playlists!</button></div>
+          <div className="button_cont" align="center"><button type="button" className="example_e_small" target="_blank" rel="nofollow noopener" onClick={() => this.getPlaylists()}>Load playlists!</button></div>
           }        
 
           { this.state.songsFetched && !this.state.createdPlaylist && !this.state.noTracksFoundState &&

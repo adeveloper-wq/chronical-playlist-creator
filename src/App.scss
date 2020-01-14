@@ -305,7 +305,7 @@ $borderW: 2px;
 .userText {
   background-color: $primary-color;
   color: white;
-  padding: 20px 46px;
+  padding: 10px 20px;
   margin-bottom: 20px;
   font-family: $base-font-families;
   margin: auto;
@@ -316,8 +316,13 @@ $borderW: 2px;
   box-shadow: -5px 5px #111;
 }
 
+.dropZone::placeholder {
+  color: #fff;  
+}
+
 .dropZone{
   width: 100%;
+  max-width: 100%;
   max-height: 300px;
   font-family: $base-font-families;
   background-color: $primary-color;
@@ -416,27 +421,22 @@ audio{
 
   @media #{$mq-medium} {
     grid-template-columns: 1fr 1fr;
-    height: 200px;
   }
 
   @media #{$mq-large} {
     grid-template-columns: 1fr 1fr;
-    height: 200px;
   }
 
   @media #{$mq-xlarge} {
     grid-template-columns: 1fr 1fr;
-    height: 200px;
   }
 
   @media #{$mq-xxlarge} {
     grid-template-columns: 1fr 1fr;
-    height: 200px;
   }
 
   @media #{$mq-xxlarge} {
     grid-template-columns: 1fr 1fr;
-    height: 200px;
   }
 }
 
@@ -876,13 +876,33 @@ audio{
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   border: none;
   border-radius: 6px;
-  font-size: 16px;
+  font-size: $base-font-size;
   background: #1DB954;
   color: #ffffff !important;
   font-weight: bold;
   padding: 5px;
   display: inline-block;
   transition: all 0.3s ease 0s;
+
+  @media #{$mq-medium} {
+    font-size: $base-font-size*$factor-medium*0.9;
+  }
+
+  @media #{$mq-large} {
+    font-size: $base-font-size*$factor-large*0.9;
+  }
+
+  @media #{$mq-xlarge} {
+    font-size: $base-font-size*$factor-xlarge*0.9;
+  }
+
+  @media #{$mq-xxlarge} {
+    font-size: $base-font-size*$factor-xxlarge*0.9;
+  }
+
+  @media #{$mq-xxlarge} {
+    font-size: $base-font-size*$factor-xxlarge*0.9;
+  }
   }
 
   .example_e_small:hover {
@@ -895,3 +915,69 @@ audio{
       -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
       transition: all 0.3s ease 0s;
       }
+
+.smaller{
+  font-size: $base-font-size;
+  font-family: $base-font-families;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: lowercase;
+
+  @media #{$mq-medium} {
+    font-size: $base-font-size*$factor-medium*0.8;
+  }
+
+  @media #{$mq-large} {
+    font-size: $base-font-size*$factor-large*0.8;
+  }
+
+  @media #{$mq-xlarge} {
+    font-size: $base-font-size*$factor-xlarge*0.8;
+  }
+
+  @media #{$mq-xxlarge} {
+    font-size: $base-font-size*$factor-xxlarge*0.8;
+  }
+
+  @media #{$mq-xxlarge} {
+    font-size: $base-font-size*$factor-xxlarge*0.8;
+  }
+}
+
+.backgroundTable{
+  background-color: $primary-color;
+  border-radius: 6px;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  color: whitesmoke;
+}
+
+.backgroundTable:hover{
+  animation: colorDatePicker 0.1s ease-in-out forwards;;
+}
+
+@keyframes colorDatePicker{
+  0%{
+      background-color: $primary-color;
+      color: whitesmoke;
+  }
+  100%{
+      background-color:rgb(34, 161, 78);
+      color: white;
+  }
+}
+
+#smaller{
+  padding: 0px;
+  padding-top: 15px;
+}
+
+.normalText{
+  color: #111;
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+}

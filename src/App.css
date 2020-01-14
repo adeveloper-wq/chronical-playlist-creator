@@ -31,33 +31,10 @@
     }
 }
 
-.normalText{
-    color: #111;
-    display: flex;
-    justify-content: center;
-    padding-top: 15px;
-    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-    font-size: 25px;
-    text-transform: uppercase;
-    font-weight: bold;
-}
+
 
 .lowerCase{
     text-transform: none;
-}
-
-.smaller{
-    font-size: 16px;
-    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: lowercase;
-}
-
-#smaller{
-    font-size: 16px;
-    padding: 0px;
-    padding-top: 15px;
 }
 
 #checkboxOwnPlaylistsLabel{
@@ -69,31 +46,6 @@
 .floatLeft{
     float: left;
     padding: 10px;
-}
-
-.backgroundTable{
-    background-color: #1DB954;
-    border-radius: 6px;
-    padding: 5px;
-    border: none;
-    cursor: pointer;
-    color: whitesmoke;
-    letter-spacing: 3px;
-}
-
-.backgroundTable:hover{
-    animation: colorDatePicker 0.1s ease-in-out forwards;;
-}
-
-@keyframes colorDatePicker{
-    0%{
-        background-color: #1DB954;
-        color: whitesmoke;
-    }
-    100%{
-        background-color:rgb(34, 161, 78);
-        color: white;
-    }
 }
 
 @keyframes color{
