@@ -3,7 +3,6 @@ import './App.css';
 import './App.scss';
 
 import Modal from "react-responsive-modal";
-import Popup from "reactjs-popup";
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
 
@@ -843,7 +842,7 @@ class App extends Component {
                 Finished creating the playlist!
               </div>
               <div className="boxFinish">
-              <div className="button_cont" align="center"><a className="example_e_small" target="_blank" rel="nofollow noopener" href={this.state.playlistLink}>Here is your playlist</a></div>
+              <div className="button_cont" align="center"><a className="example_e_small" target="_blank" rel="noopener noreferrer"  href={this.state.playlistLink}>Here is your playlist</a></div>
               </div>
               { this.state.randomSongLink !== null && this.state.randomSongLink.length > 3 &&
                 <div className="boxFinish">
@@ -862,7 +861,7 @@ class App extends Component {
                 
               </div>
               <div className="boxFinish">
-              <div className="button_cont" align="center"><a className="example_e_small" target="_blank" rel="nofollow noopener" onClick={() => window.location.reload(true)}>Create new playlist</a></div>
+              <div className="button_cont" align="center"><button type="button" className="example_e_small" target="_blank" rel="nofollow noopener" onClick={() => window.location.reload(true)}>Create new playlist</button></div>
               </div>
             </div>
           } 
