@@ -889,6 +889,9 @@ class App extends Component {
                 { this.state.finishedFetchingSongs &&
                 <div className="button_cont" align="center"><button type="button" className="example_e_small" target="_blank" rel="nofollow noopener" onClick={() => this.makePlaylist()}>Make playlist!</button></div>
               }
+              { !this.state.finishedFetchingSongs && !(this.state.isChrome || this.state.isFirefox) &&
+                <div>Loading...</div>
+              }
               </div>
             </div>
             </div>
