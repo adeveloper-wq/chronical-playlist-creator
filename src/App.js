@@ -478,7 +478,7 @@ class App extends Component {
     //  allSongIDs.push(element.id);
     // });
     var name = "CPC " + this.state.startDate + " to " + this.state.endDate;
-    var description = "Songs from the following playlists: ";
+    var description = "Created with cpc-dev.netlify.com - Songs from the following playlists: ";
 
     var randomSong = this.getRandomInt(0, this.state.allTracksWithoutKeys.length-1);
     if(this.state.allTracksWithoutKeys[randomSong].id != null && this.state.allTracksWithoutKeys[randomSong].preview_url != null){
