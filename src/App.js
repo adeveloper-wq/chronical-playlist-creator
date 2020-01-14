@@ -51,6 +51,7 @@ class App extends Component {
         modal: {'borderRadius': '5px', 'boxShadow': '-5px 5px #111', 'font-family': 'Open Sans, Helvetica, Arial, sans-serif'},
         overlay: {background: '#fdcb6e'},
       },
+      currentDate: '',
       id: ''
     }
 
@@ -172,6 +173,8 @@ class App extends Component {
     }else{
       this.start();
     }
+
+    this.setMaxDate();
   }
 
   start(){
@@ -349,6 +352,7 @@ class App extends Component {
         }
         start++;
         if (start == numberPlaylists) {
+          await this.Sleep(3000);
           this.setState({
             opacity2: "0%",
             finishedFetchingSongs: true
@@ -569,6 +573,24 @@ class App extends Component {
     }
   }
 
+  setMaxDate(){
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+    if(dd<10){
+            dd='0'+dd
+        } 
+        if(mm<10){
+            mm='0'+mm
+        } 
+
+    today = yyyy+'-'+mm+'-'+dd;
+    this.setState({
+      currentDate: today
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -754,13 +776,13 @@ class App extends Component {
                 <div className="boxPlaylistsMenu">
                   <label>
                   Start date:&nbsp;&nbsp;
-                  <input type="date" id="startDate" className="smaller backgroundTable" onChange={() => this.onDateChanged("start")} ></input>
+                  <input type="date" id="startDate" className="smaller backgroundTable" max={this.state.currentDate} onChange={() => this.onDateChanged("start")} ></input>
                   </label>
                 </div>
                 <div className="boxPlaylistsMenu">
                   <label>
                   End date:&nbsp;&nbsp;
-                  <input type="date" id="endDate" className="smaller backgroundTable" onChange={() => this.onDateChanged("end")} ></input>
+                  <input type="date" id="endDate" className="smaller backgroundTable" max={this.state.currentDate} onChange={() => this.onDateChanged("end")} ></input>
                   </label>
                 </div>
               </div>
@@ -790,7 +812,7 @@ class App extends Component {
                 
               </div>
               <div className="boxFinish">
-              <div className="button_cont" align="center"><a className="example_e_small" target="_blank" rel="nofollow noopener" href="https://cpc-dev.netlify.com/">Create new playlist</a></div>
+              <div className="button_cont" align="center"><a className="example_e_small" target="_blank" rel="nofollow noopener" onClick={() => window.location.reload(true)}>Create new playlist</a></div>
               </div>
             </div>
           } 
@@ -855,14 +877,15 @@ class App extends Component {
           } 
 
           { this.state.songsFetched && !this.state.createdPlaylist && this.state.noTracksFoundState &&
-          <div id="containerOverlay2">
+          <div id="containerOverlayTracksMenu">
             <div id="loadingUp" className="rainbow" style={{opacity: this.state.opacity2}}></div>
             <div id="gridDown">
-              <div className="containerGRIDSmall">
-                <div className="boxSmall">
+              <div className="containerGRIDTracksMenu">
+                <div className="boxTracksMenu">
                   No matching tracks found!
                 </div>
-                <div className="boxSmall">
+                <div className="boxTracksMenu">
+                <div className="button_cont" align="center"><button type="button" className="example_e_small" target="_blank" rel="nofollow noopener" onClick={() => window.location.reload(true)}>Create new playlist</button></div>
                 </div>
               </div>
             </div>
