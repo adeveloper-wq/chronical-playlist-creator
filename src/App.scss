@@ -122,31 +122,31 @@ h2 {font-family: 'Open Sans', sans-serif; display: none; font-weight: 300; line-
   @media #{$mq-medium} {
     font-size: $base-font-size-h2*$factor-medium;
     margin: 0 0 30px;
-    display: revert;
+    display: grid;
   }
 
   @media #{$mq-large} {
     font-size: $base-font-size-h2*$factor-large;
     margin: 0 0 30px;
-    display: revert;
+    display: grid;
   }
 
   @media #{$mq-xlarge} {
     font-size: $base-font-size-h2*$factor-xlarge;
     margin: 0 0 30px;
-    display: revert;
+    display: grid;
   }
 
   @media #{$mq-xxlarge} {
     font-size: $base-font-size-h2*$factor-xxlarge;
     margin: 0 0 30px;
-    display: revert;
+    display: grid;
   }
 
   @media #{$mq-xxlarge} {
     font-size: $base-font-size-h2*$factor-xxlarge;
     margin: 0 0 30px;
-    display: revert;
+    display: grid;
   }
 }
 

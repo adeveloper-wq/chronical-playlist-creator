@@ -611,7 +611,7 @@ class App extends Component {
             <span>C</span> 
             <span>.</span>          
           </h1>
-          <h2>Chronical Playlist Creator - revive <span style={{'fontStyle': 'italic'}}>your</span> songs</h2>
+          <h2>Chronical Playlist Creator - revive your songs</h2>
         </div>
 
         <div className="body">
