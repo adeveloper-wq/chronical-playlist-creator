@@ -666,6 +666,7 @@ class App extends Component {
               </p>
           </Modal>
           <Modal open={this.state.openImpressum} onClose={this.closeModalImpressum} center styles={this.state.modalStyle}>
+              <p>The only back-end I'm running is doing the Spotify authentification. The rest is running on your device. To ensure the functionality of the website, Spotify must be used. The Spotify privacy policy can be found here: <a href="https://www.spotify.com/de/legal/privacy-policy/">https://www.spotify.com/de/legal/privacy-policy/</a>. I don't have a database and I don't log/save any data from you. The data entered on my website will be deleted when the page is reloaded. A cookie is used for the Spotify login, which is deleted after the login. It is necessary for the functionality of the website and by using the website you agree to it. The back-end is hosted on Heroku and the front-end is hosted on Github and deployed by Netlify. The following paragraphs are a safeguard for applicable law. Not all of the things described appear on this website.</p>
               <h3>Impressum</h3>
               <p>
                 <b>
@@ -683,7 +684,7 @@ class App extends Component {
                 </b>
               </p>
               <p>
-                Telefon: +49 (0) 1522 866 0978
+                Telefon: +49 (0) 1522 866 0978,
                 E-Mail: kettenblitz@gmx.net
               </p>
               <p>
