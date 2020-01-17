@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import './App.scss';
 
+import CookieConsent from "react-cookie-consent";
 import Modal from "react-responsive-modal";
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
@@ -603,7 +604,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App"> 
         <div className="header">
           <h1 className="popout">
             <span>C</span>
@@ -615,6 +616,19 @@ class App extends Component {
         </div>
 
         <div className="body">
+        <CookieConsent
+            location="bottom"
+            buttonText="Sure man!"
+            cookieName="CookieConsent"
+            buttonClasses="example_e_small_cookie"
+            style={{ background: "#2B373B" }}
+            buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+          >
+            This website uses one cookie for this cookie message and one cookie for the Spotify log in. The functionality of the website depends on it and by using the site you agree to it.{" "}
+            <span style={{ fontSize: "10px" }}>
+            More information in the imprimt.
+            </span>
+        </CookieConsent>
           { !this.state.loggedIn &&
           <div className="contentBox">
             <p style={{fontWeight: "bold"}}>

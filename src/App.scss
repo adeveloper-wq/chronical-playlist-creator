@@ -877,6 +877,49 @@ audio{
       transition: all 0.3s ease 0s;
       }
 
+.example_e_small_cookie {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  border: none;
+  border-radius: 6px;
+  font-size: $base-font-size;
+  background: #1DB954;
+  font-weight: bold;
+  padding: 5px;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+
+  @media #{$mq-medium} {
+    font-size: $base-font-size*$factor-medium*0.9;
+  }
+
+  @media #{$mq-large} {
+    font-size: $base-font-size*$factor-large*0.9;
+  }
+
+  @media #{$mq-xlarge} {
+    font-size: $base-font-size*$factor-xlarge*0.9;
+  }
+
+  @media #{$mq-xxlarge} {
+    font-size: $base-font-size*$factor-xxlarge*0.9;
+  }
+
+  @media #{$mq-xxlarge} {
+    font-size: $base-font-size*$factor-xxlarge*0.9;
+  }
+  }
+
+.example_e_small_cookie:hover {
+      color: #404040 !important;
+      font-weight: 700 !important;
+      letter-spacing: 3px;
+      cursor: pointer;
+      background: none;
+      -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+      -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+      transition: all 0.3s ease 0s;
+      }
+
 .example_e_small {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   border: none;
