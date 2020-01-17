@@ -982,7 +982,7 @@ class App extends Component {
           <div className="contentBox">
             <div className="containerGRIDFoot">
               <div className="boxFoot impressum" onClick={() => this.openModalImpressum()}>
-                Impr./Daten.
+                Imprint
               </div>
               <div className="boxFoot twitter">
               <a target="_blank" className="footLinks footLinksTwitter"rel="noopener noreferrer" href="https://twitter.com/maybe_tomorrow5" title="Twitter">Twitter</a>
