@@ -633,7 +633,7 @@ audio{
 }
   
 .inputGroup {
-  background-color: wh;
+  background-color: white;
   display: block;
   margin: 10px 0;
   position: relative;
@@ -691,6 +691,26 @@ audio{
     &:before {
       transform: translate(-50%, -50%) scale3d(56, 56, 1);
       opacity: 1;
+
+      @media #{$mq-medium} {
+ 
+      }
+    
+      @media #{$mq-large} {
+       
+      }
+    
+      @media #{$mq-xlarge} {
+       
+      }
+    
+      @media #{$mq-xxlarge} {
+        transform: translate(-50%, -50%) scale3d(63, 63, 1);
+      }
+    
+      @media #{$mq-xxlarge} {
+        
+      }
     }
 
     &:after {
@@ -772,6 +792,26 @@ audio{
     &:before {
       transform: translate(-50%, -50%) scale3d(56, 56, 1);
       opacity: 1;
+
+      @media #{$mq-medium} {
+ 
+      }
+    
+      @media #{$mq-large} {
+       
+      }
+    
+      @media #{$mq-xlarge} {
+       
+      }
+    
+      @media #{$mq-xxlarge} {
+        transform: translate(-50%, -50%) scale3d(63, 63, 1);
+      }
+    
+      @media #{$mq-xxlarge} {
+        
+      }
     }
 
     &:after {

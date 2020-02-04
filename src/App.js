@@ -507,8 +507,10 @@ class App extends Component {
     Object.entries(this.state.songsForPlaylist).map(([key, value]) => {
       description = description + key + ", ";
       value.forEach(element => {
-        if(element.id != null){
-          allSongURIs.push("spotify:track:" + element.id);
+        if(element != null){
+          if(element.id != null){
+            allSongURIs.push("spotify:track:" + element.id);
+          }
         }
        });
     })
@@ -600,6 +602,12 @@ class App extends Component {
     this.setState({
       currentDate: today
     });
+  }
+
+  renderSongs(value){
+    if (value != null){
+    return <div className="songListItem">{value.name}</div>;
+    }
   }
 
   render() {
@@ -971,9 +979,7 @@ class App extends Component {
               { this.state.playlistsToHide.includes(key) &&
                 <div className="songList">
                   {value.map(value =>
-                  <div className="songListItem">
-                    {value.name}
-                  </div>
+                    this.renderSongs(value)
                   )}
                 </div>
               }
